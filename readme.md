@@ -1,102 +1,71 @@
-# Automated CI/CD Pipeline with Jenkins for Node.js Apps
+# 📝 Node.js Todo List App
 
-This project demonstrates a complete CI/CD workflow using **Jenkins**, **Docker**, and **GitHub** to build, deploy, and run a **Node.js To-Do App** inside a Docker container.
+A simple, containerized Todo List application built with **Node.js and Express**. This project demonstrates a complete DevOps workflow including **Docker** containerization and a CI/CD pipeline using **Jenkins**.
 
-
-### 🧱 Tech Stack
-
-- Node.js (Express)
-- Jenkins (running on AWS EC2)
-- Docker
-- GitHub (webhook integration)
+## Architect Diagram
+![Architect Diagram](/assets/workflow.png)
 
 
-### 🔧 Project Features
+## 🛠️ Tech Stack
+- **Backend**: Node.js, Express.js (v5)
+- **Frontend**: EJS, CSS
+- **Testing**: Mocha, Chai, Supertest, NYC (Coverage)
+- **DevOps**: Docker, Jenkins, Git
 
-- Jenkins freestyle project configured for Node.js builds
-- GitHub integration with Jenkins (webhook-based build trigger)
-- Jenkins plugins: GitHub, Docker, NodeJS, etc.
-- Dockerized pipeline: Build, Deploy & Run app container
-- Hosted on an EC2 instance with Jenkins pre-installed
+---
 
+## 📋 Prerequisites
 
-### 🔄 CI/CD Workflow
+Before you start, make sure you have installed:
+| Tool    | Purpose in Project                                                     | Documentation |
+| ------- | ---------------------------------------------------------------------- | ------------- |
+| Node.js | The runtime environment used to build the backend server (Express.js) and run the application logic nodejs​.            | [Node.js Installation](https://nodejs.org/en/download)   |
+| Docker  | Used to containerize the application, ensuring it runs consistently across different environments by packaging the code and dependencies together docker​. | [Docker Installation](https://docs.docker.com/engine/install/)   |
+| Jenkins | The automation server that handles the CI/CD pipeline, including checking out code, building Docker images, and deploying the container.                   | [Jenkins Docs](https://www.jenkins.io/doc/book/installing/)  |
 
-![Process Flow](./assets/workflow.png)
+---
 
-1. Developer pushes code to GitHub repo.
-2. GitHub webhook triggers Jenkins build.
-3. Jenkins pulls the repo → installs dependencies.
-4. Docker image is built and tagged.
-5. Jenkins runs the Docker container locally.
+## 💻 How to Run Locally
 
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-username/my-todolist.git
+   cd my-todolist
+   ```
+2. Install Dependencies
+   ```sh
+   npm install
+   ```
+3. Run the Application
+   ```sh
+   npm start
+   ```
+4. Access the app in browser `http://localhost:8000/todo`
 
-### 📁 Project Structure
-
-```sh
-jenkins-nodejs-pipeline/
-├── Dockerfile
-├── Jenkinsfile
-├── app.js
-├── package.json
-└── README.md
-```
-
-
-### ▶️ Manual App Run Instructions (for testing)
-
-```sh
-# Install Node.js & npm (Debian/Ubuntu)
-sudo apt update && sudo apt install nodejs npm -y
-
-# Install dependencies
-npm install
-
-# Run app locally
-node app.js
-```
-
-> The app runs on `http://localhost:3000` (by default).
+![ToDo](/assets/verify.png)
 
 
-### 📌 Jenkins Setup Notes
+## 🔄 Jenkins CI/CD Pipeline
+This project includes a Jenkinsfile that automates the deployment workflow.
 
-1. Launch Jenkins on AWS EC2
-   - Use Ubuntu-based EC2
-   - Install Java, Jenkins, and Docker
-   - Add jenkins user to Docker group
+**Pipeline Stages:**
+1. **Checkout:** Pulls code from GitHub.
+2. **Install Dependencies:** Runs npm ci for a clean install.
+3. **Build Image:** Creates a Docker image with the build number tag.
+4. **Push to Docker Hub:** Pushes the image to user/todolist (or your repo).
+5. **Deploy:** Stops the old container and runs the new one automatically.
+6. **Health Check:** Verifies that the app is responding correctly.
 
-2. Configure Jenkins
-   - Install GitHub + Docker plugins
-   - Create Freestyle Project
-   - Connect to GitHub repo via webhook
-   - Add build steps:
-    ```bash
-    npm install
-    docker build -t nodejs-app .
-    docker run -d -p 3000:3000 nodejs-app
-    ```
-
-### 🧪 Test the Deployment
-
-After successful build:
-   - Visit `http://<EC2-Public-IP>:3000`
-   - App should display a sample To-Do UI
+**Jenkins Requirements:**
+1. **Plugins:** Docker Pipeline, NodeJS, Git.
+2. **Credentials:** docker-cred (Username/Password) for Docker Hub access.
+3. **Tools:** NodeJS-24 configured in Global Tool Configuration.
 
 
-### 🧹 Clean Up (Optional)
-
-```sh
-docker ps          # List containers
-docker stop <id>   # Stop container
-docker rm <id>     # Remove container
-docker rmi nodejs-app  # Remove image
-```
-
-
-### 🏁 Summary
-
-- This hands-on project shows how to:
-- Automate builds with GitHub + Jenkins
-- Use Docker to containerize a Node.js app
-- Run the app on AWS EC2 instance as part of a CI/CD flow
+## 🚀 Features
+- **CRUD Operations**: Add, Edit, and Delete todo items.
+- **Clean UI**: Server-side rendering using EJS templates.
+- **Input Validation**: Sanitization to prevent XSS attacks.
+- **Automated Testing**: Unit tests using Mocha, Chai, and Supertest.
+- **Dockerized**: specific `Dockerfile` for production-ready container image.
+- **CI/CD Ready**: Complete `Jenkinsfile` for automated build and deployment.
