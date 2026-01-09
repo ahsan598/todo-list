@@ -19,9 +19,9 @@ A simple, containerized Todo List application built with **Node.js and Express**
 
 Before you start, make sure you have installed:
 
-| Tool        | Purpose                                                   | Documentation |
-|-------------|-----------------------------------------------------------|---------------|
-| **Node.js** | The runtime environment used to build run the application | [Install Node.js](https://nodejs.org/en/download)           |
+| Tool        | Purpose                                                     | Documentation |
+|-------------|-------------------------------------------------------------|---------------|
+| **Node.js** | The runtime environment used to build and run the application | [Install Node.js](https://nodejs.org/en/download)           |
 | **Docker**  | Builds and runs container images for application services | [Install Docker](https://docs.docker.com/engine/install/)       |
 | **Jenkins** | The automation server that handles the CI/CD pipeline     | [Install Jenkins](https://www.jenkins.io/doc/book/installing/)  |
 
@@ -39,7 +39,7 @@ npm install
 # Run the Application
 npm start
 
-# Access the app `http://localhost:8000/todo`
+# Access the app in your browser http://localhost:8000/todo
 ```
 ![ToDo](/assets/verify.png)
 
@@ -50,7 +50,7 @@ This project includes a Jenkinsfile that automates the deployment workflow.
 
 **I. Pipeline Stages:**
 1. **Checkout:** Pulls code from GitHub.
-2. **Install Dependencies:** Runs npm ci for a clean install.
+2. **Install Dependencies:** Runs `npm ci` for a clean install.
 3. **Build Image:** Creates a Docker image with the build number tag.
 4. **Push to Docker Hub:** Pushes the image to docker hub with image tag.
 5. **Deploy:** Stops the old container and runs the new one automatically.
