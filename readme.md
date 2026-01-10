@@ -62,17 +62,9 @@ This project includes a Jenkinsfile that automates the deployment workflow.
 
 
 ### 🚀 Features
-- **CRUD Operations**: Add, Edit, and Delete todo items.
-- **Clean UI**: Server-side rendering using EJS templates.
-- **Automated Testing**: Unit tests using Mocha, Chai, and Supertest.
-- **Dockerized**: specific `Dockerfile` for production-ready container image.
-- **CI/CD Ready**: Complete `Jenkinsfile` for automated build and deployment.
 
-
-### 🏁 Summary
-
-This hands-on project shows how to:
-
-- **End-to-End Automation:** Built a complete CI/CD pipeline using Jenkins to automatically build, test, and deploy a Node.js application whenever code is pushed to GitHub.
-- **Containerization Standard:** Dockerized the application to ensure consistency across environments, utilizing production-ready practices like non-root users and optimized image layers.
-- **DevOps Best Practices:** Implemented secure credential management for Docker Hub, automated health checks for reliability, and integrated version control with dynamic image tagging.
+1. **CRUD Operations**: Add, Edit, and Delete todo items.
+2. **Clean UI**: Server-side rendering using EJS templates.
+3. **Automated Testing**: Unit tests using Mocha, Chai, and Supertest
+4. **Dockerized**: specific `Dockerfile` for production-ready container image.
+5. **CI/CD Ready**: Complete `Jenkinsfile` for automated build and deployment.
