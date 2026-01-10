@@ -16,7 +16,7 @@ logs/
 *.log
 
 # ===============================
-# OS / Editor
+# OS Editor
 # ===============================
 .DS_Store
 Thumbs.db
@@ -26,7 +26,7 @@ Thumbs.db
 *.swo
 
 # ===============================
-# Test / Coverage
+# Test Coverage
 # ===============================
 coverage/
 .nyc_output/
