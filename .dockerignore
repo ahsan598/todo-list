@@ -1,0 +1,35 @@
+# Dependency directories (never copy local dependencies)
+node_modules/
+jspm_packages/
+
+# Build outputs and cache directories
+dist/
+build/
+.next/
+.nuxt/
+.out/
+.cache/
+.npm/
+
+# Local configuration and environment secrets
+.env
+.env.*
+!.env.example
+.git
+.gitignore
+.dockerignore
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE and System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+README.md
